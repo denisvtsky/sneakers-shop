@@ -1,0 +1,68 @@
+<html lang="ru">
+<head>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <style>
+        .item_img {
+            width: 100px;
+            height: 100px;
+        }
+        details[open] .item_img {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<%- include('../common/menu') %>
+<div class="container">
+    <% Object.keys(sneakers).forEach((brand) => {%>
+        <h1 id="<%=brand%>"> <a href="/admin/brands#<%= brand %>"><%= brand %></a></h1>
+        <% Object.keys(sneakers[brand]).forEach((model) => {%>
+            <% const sneaker = sneakers[brand][model];%>
+            <% const baseMeta = sneaker.metas[0]%>
+            <details class="item_card">
+                <summary>
+                    <div class="item_card_img">
+                        <% let photo = null %>
+                        <% for (const meta of sneaker.metas) {
+                            if (meta.photos.length > 0) {
+                                photo = meta.photos[0];
+                                break;
+                            }
+                        } %>
+                        <img class="item_img" src="/<%= photo %>" alt=":(" width="200px"  height="200px">
+                    </div>
+                    <div class="form-group">
+                        <div><b><%=sneaker.model%></b></div>
+                    </div>
+                </summary>
+                <div class="item_card_info">
+                    <div class="form-group_check">
+                        <div style="color: <%= baseMeta?.isActive ? 'LimeGreen' : 'red'%>"><%= baseMeta?.isActive ? 'В продаже' : 'Не в продаже'%></div>
+                    </div>
+                    <% if (baseMeta?.description) {%>
+                    <div class="form-group">
+                        <%=baseMeta?.description%>
+                    </div>
+                    <% } %>
+                    <label class="size-area_label">Размеры</label>
+                    <div class="size-list">
+                        <% Object.keys(baseMeta?.sizes ?? {}).forEach((size) => { %>
+                            <div class="size_item">
+                                <div class="size_number"><%=size%></div>
+                                <div class="size_quantity"> - <%= baseMeta.sizes[size] %> шт.</div>
+                            </div>
+                        <% }); %>
+                    </div>
+                </div>
+                <a href="/admin/sneakers/edit/<%=sneaker.id%>"><button id="btn-send" class="btn-send">Изменить</button></a>
+            </details>
+        <% }); %>
+    <% }); %>
+</div>
+</body>
+</html>

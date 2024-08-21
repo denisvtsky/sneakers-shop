@@ -1,0 +1,55 @@
+<html lang="ru">
+<head>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <script type="module" src="/public/script/create.js"></script>
+</head>
+<body>
+<%- include('../common/menu') %>
+<div class="container">
+    <form class="item_card">
+        <div class="item_card_info">
+            <div class="form-group">
+                <label for="brand" class="form-group_label">Бренд</label>
+                <input type="text" id="brand">
+            </div>
+            <div class="form-group">
+                <label for="model" class="form-group_label">Модель</label>
+                <input type="text" id="model">
+            </div>
+            <div class="form-group">
+                <label class="form-group_label" for="description">Описание</label>
+                <textarea class="description" id="description"></textarea>
+            </div>
+            <div class="form-group_check">
+                <label class="form-group_label">В продаже</label>
+                <input class="isActive" type="checkbox" id="isActive">
+                <label for="isActive" class="isActiveLabel"></label>
+            </div>
+            <div class="size-area">
+                <div class="size-area_label">
+                    <label class="size-area_label">Размеры</label>
+                    <button id="add-size" class="add-size">Добавить размер</button>
+                </div>
+                <div class="size-list" id="size-list"></div>
+            </div>
+        </div>
+        <hr>
+        <div class="item_card_img">
+            <% shops.forEach((shop) => { %>
+                <div class="item_card_img_shop">
+                    <p><%= shop.name %></p>
+                    <div id="<%= `img_list_shop_${shop.id}` %>" class="images_horizontal_container"></div>
+                    <input id="<%= `add-photo_${shop.id}` %>" class="add-photo_shop_btn" type="file" multiple>
+                </div>
+                <hr>
+            <% }); %>
+        </div>
+        <button id="btn-send" class="btn-send">Сохранить</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>admin</title>
+	<link rel="stylesheet" href="/public/css/style.css">
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="script.js"></script>
+</head>
+<body>
+	<div class="container">
+		<form class="item_card">
+			<div class="item_card_images">
+				<img class="item_img" src="lagerfeld_2.jpg" alt="" width="200px"  height="200px">
+				<button id="add-photo">Добавить фото</button>
+			</div>
+			<div class="item_card_info">
+				<div class="form-group">
+					<label>Бренд</label>
+					<input type="text" id="brand">
+				</div>
+				<div class="form-group">
+					<label>Модель</label>
+					<input type="text" id="model">
+				</div>
+				<div class="form-group_check">
+					<label>В продаже</label>
+					<input type="checkbox" id="isOnSale">
+				</div>
+				
+				<div class="size-area">
+					<label>Размеры</label>
+					<div class="size-list">
+						<div class="size_item">
+							<div class="size_number">41</div>
+							<div class="size_amount">10</div>
+							<button>Х</button>
+						</div>
+						<div class="size_item">
+							<div class="size_number">40</div>
+							<div class="size_amount">17</div>
+							<button>Х</button>
+						</div>
+						<div class="size_item">
+							<div class="size_number">37</div>
+							<div class="size_amount">4</div>
+							<button>Х</button>
+						</div>
+						<div class="size_item">
+							<div class="size_number">42</div>
+							<div class="size_amount">1</div>
+							<button>Х</button>
+						</div>
+						<div class="size_item">
+							<div class="size_number">39</div>
+							<div class="size_amount">6</div>
+							<button>Х</button>
+						</div>
+						<div class="size_item">
+							<div class="size_number">38</div>
+							<div class="size_amount">12</div>
+							<button>Х</button>
+						</div>
+						<button>Добавить размер</button>
+					</div>
+				</div>
+			</div>
+			<button id="btn-send">Сохранить</button>
+		</form>
+	</div>
+</body>
+</html>

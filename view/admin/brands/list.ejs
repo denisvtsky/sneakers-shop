@@ -1,0 +1,31 @@
+<html lang="ru">
+<head>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+</head>
+<body>
+<%- include('../common/menu') %>
+<div class="container">
+    <% brands.forEach((brand) => {%>
+        <div id="<%=brand.name%>" class="item_card">
+            <div class="item_card_images">
+                <img class="item_img" src="/<%= brand.photos[0]%>" alt="" width="200px"  height="200px">
+            </div>
+            <div class="item_card_info">
+                <div class="form-group">
+                    <div><b><%=brand.name%></b></div>
+                </div>
+                <div>
+                    <%= brand.description %>
+                </div>
+            </div>
+                <a href="/admin/brands/edit/<%=brand.id%>"><button id="btn-send" class="btn-send">Изменить</button></a>
+                <a href="/admin/sneakers#<%=brand.name%>"><button id="btn-send" class="btn-send">Кросы</button></a>
+        </div>
+    <%});%>
+</div>
+</body>
+</html>
